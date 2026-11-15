@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Class J-001 — orbital night design system. All colors in HSL. */
+
+@layer base {
+  :root {
+    --background: 210 37% 7%;
+    --foreground: 203 33% 94%;
+
+    --card: 208 34% 13%;
+    --card-foreground: 203 33% 94%;
+
+    --popover: 208 34% 12%;
+    --popover-foreground: 203 33% 94%;
+
+    --primary: 166 52% 67%;
+    --primary-foreground: 210 45% 8%;
+
+    --secondary: 208 30% 18%;
+    --secondary-foreground: 203 33% 94%;
+
+    --muted: 208 28% 16%;
+    --muted-foreground: 205 16% 63%;
+
+    --accent: 166 52% 67%;
+    --accent-foreground: 210 45% 8%;
+
+    --warning: 34 87% 69%;
+    --destructive: 0 72% 62%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 205 25% 22%;
+    --input: 205 25% 22%;
+    --ring: 166 52% 67%;
+
+    --radius: 1.25rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Single type family: the Apple system face (SF Pro). Hierarchy comes
+       from weight and size only; data reads with tabular numerals. */
+    font-family:
+      -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+      "Helvetica Neue", system-ui, sans-serif;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /* Kept as a semantic hook for data readouts: same Apple face,
+     tabular numerals so figures align vertically. */
+  .font-mono-data {
+    font-family: inherit;
+    font-feature-settings: "tnum";
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer components {
+  /* Liquid Glass surface: translucent, blurred, hairline border, inner sheen */
+  .glass {
+    background: rgba(22, 33, 44, 0.42);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    border-radius: 1.25rem;
+  }
+
+  .glass-strong {
+    background: rgba(22, 33, 44, 0.62);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+  }
+
+  .glass-hover {
+    transition:
+      background 200ms ease,
+      border-color 200ms ease,
+      transform 200ms ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(30, 44, 58, 0.58);
+    border-color: rgba(127, 214, 194, 0.28);
+  }
+}
+
+/* Subtle entrance animation for overlay panels */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.rise-in {
+  animation: rise-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(143, 162, 176, 0.25);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

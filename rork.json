@@ -1,0 +1,18 @@
+{
+  "$schema": "https://rork.com/schema/rork.json",
+  "apps": [
+    {
+      "name": "TerraNISAR",
+      "path": "web-terranisar",
+      "framework": "web"
+    },
+    {
+      "name": "Class J-001 iOS",
+      "path": "ios-class-j-001-ios",
+      "framework": "swift",
+      "settings": {
+        "swiftSibling": false
+      }
+    }
+  ]
+}
